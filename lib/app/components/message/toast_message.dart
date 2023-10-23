@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/app/common/extensions/string_extension.dart';
 import 'package:flutter_base_project/app/main/routing/routing_manager/routing_manager.dart';
 import 'package:flutter_base_project/app/main/values/assets/assets.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:overlay_kit/overlay_kit.dart';
 
 import '../../utils/size/padding_and_radius.dart';
@@ -96,10 +96,7 @@ class _ToastWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: paddingXXS),
-              SvgPicture.asset(
-                svgStr,
-                width: 24.horizontalScale,
-              ),
+              svgStr.toSvg(width: 24.horizontalScale),
               const SizedBox(width: paddingM),
               Flexible(
                 child: Text(

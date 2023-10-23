@@ -24,9 +24,6 @@ abstract class BaseControllerInterface extends GetxController{
   String? get errorMessage => _errorMessage.value;
   set errorMessage(String? value) => _errorMessage.value = value;
 
-  bool get isOperationInProcess => loadingStatus == LoadingStatus.Processing;
-
-  bool get showAppBarLoading => loadingStatus == LoadingStatus.Processing;
 
   Future<void> onReadyGeneric(Function onReadyFunction) async {
     super.onReady();

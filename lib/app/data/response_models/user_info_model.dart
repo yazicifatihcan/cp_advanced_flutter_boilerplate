@@ -1,4 +1,4 @@
-import 'package:background_json_parser/background_json_parser.dart';
+import '../local_models/domain/base_parse_model.dart';
 
 class GetUserInfoModel extends IBaseModel<GetUserInfoModel> {
   GetUserInfoModel({
