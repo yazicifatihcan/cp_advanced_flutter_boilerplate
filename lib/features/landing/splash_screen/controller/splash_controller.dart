@@ -5,6 +5,7 @@ import 'package:flutter_base_project/app/common/base_view/controller/base_contro
 import 'package:flutter_base_project/app/common/exception/app_exception.dart';
 import 'package:flutter_base_project/app/managers/connection_manager/connection_manager.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../app/managers/notification/local_notification_handler.dart';
 import '../../../../app/main/i10n/i10n.dart';
 import '../../../../app/managers/session_manager/session_manager.dart';
@@ -54,13 +55,11 @@ class SplashController extends BaseControllerInterface {
       throw AppException(AppLocalization.getLabels.noInternetErrorMessage);
     }
 
-    await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(Duration(seconds: 2));
+
       // await Firebase.initializeApp();
       // FirebaseMessagingService.instance.listenToNotification();
-    
 
-      // splashDelay.whenComplete(
-      //   () => Navigator.pushNamedAndRemoveUntil(context, MainScreensEnum.landingScreen.path, (Route route) => false),
-      // );
+      context.go('/1st');      
     } 
 }

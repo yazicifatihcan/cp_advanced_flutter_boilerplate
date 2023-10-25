@@ -14,7 +14,7 @@ class SizeConfig {
   static double _screenHeight = 0;
 
   static MediaQueryData get _mediaQueryData {
-    final BuildContext? ctx = RoutingManager.navigatorKey.currentContext;
+    final BuildContext? ctx = RoutingManager.parentKey.currentContext;
     if (ctx == null) return MediaQueryData.fromView(ui.window);
 
     return MediaQuery.of(ctx);

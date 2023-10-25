@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_project/app/common/extensions/string_extension.dart';
 import 'package:flutter_base_project/app/main/values/assets/assets.dart';
-import '../../app/utils/size/padding_and_radius.dart';
-import '../../app/utils/style/text_style.dart';
-import '../../app/main/i10n/i10n.dart';
+import '../../../app/utils/size/padding_and_radius.dart';
+import '../../../app/utils/style/text_style.dart';
+import '../../../app/main/i10n/i10n.dart';
 
 /// Gidilmek istenilen ekran tanımlı değil ise Gösterilen ekran
 class UnknownRouteScreen extends StatelessWidget {
