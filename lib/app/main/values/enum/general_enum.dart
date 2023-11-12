@@ -1,3 +1,8 @@
+enum PlatformType {
+  ANDROID,
+  IOS
+}
+
 enum AppEnvironment {
   Development,
   Production,

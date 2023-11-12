@@ -20,7 +20,11 @@ class Example extends GetView<ExampleController> {
       ///Body
       body: BaseView<ExampleController>(
         controller: controller,
-        child: Container(),
+        child: Column(
+          children: [
+            // BannerAdWidget(adUnitId: Platform.isAndroid ? AdsVariables.adUnitIds[AdsType.BANNER]![PlatformType.ANDROID]!  : AdsVariables.adUnitIds[AdsType.BANNER]![PlatformType.IOS]!),
+          ],
+        ),
       ),
     );
   }

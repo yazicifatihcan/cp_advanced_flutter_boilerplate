@@ -10,11 +10,12 @@ import 'package:flutter_base_project/core/i10n/i10n.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
-class SplashController extends BaseControllerInterface {
+class SplashController extends BaseControllerInterface{
   @override
   void onInit() {
     super.onInit();
     init();
+
   }
 
   @override
