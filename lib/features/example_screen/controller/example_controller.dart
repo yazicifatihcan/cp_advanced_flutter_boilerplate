@@ -2,22 +2,20 @@ import 'package:flutter_base_project/app/common/base_view/controller/base_contro
 import 'package:flutter_base_project/app/common/extensions/domain_extension.dart';
 
 class ExampleController extends BaseControllerInterface {
-
-
+  
+  
   @override
-  Future<void> onReady() async{
-    await onReadyGeneric(()async{
+  Future<void> onReady() async {
+    await onReadyGeneric(() async {
       await getAllCharacters();
     });
   }
 
-
-  Future<void> getAllCharacters()async{
-     final res = await appRepository.authRepository.getAllCharacters().getAllData();
-     print(res?.results?.first.name);
+  Future<void> getAllCharacters() async {
+    final res = await appRepository.authRepository.getAllCharacters().getAllData();
+    print(res?.results?.first.name);
   }
 
 
-
-
+  
 }
