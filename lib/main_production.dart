@@ -12,7 +12,7 @@ void main() {
     EnvironmentConfigModel(
       app:const App(title: 'ClaudePeak Boilerplate'),
       environment: AppEnvironment.Production,
-      apiBaseUrl: 'Base Url',
+      apiBaseUrl: 'rickandmortyapi.com',
       socketUrl: 'Socket Url',
     ),
   );

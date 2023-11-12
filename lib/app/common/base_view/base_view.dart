@@ -3,7 +3,7 @@ import 'package:flutter_base_project/app/common/base_view/components/general_loa
 import 'package:flutter_base_project/app/common/base_view/controller/base_controller.dart';
 import 'package:flutter_base_project/app/common/extensions/general_extension.dart';
 import 'package:get/get.dart';
-import '../../main/i10n/i10n.dart';
+import '../../../core/i10n/i10n.dart';
 import 'components/general_error_view.dart';
 
 class BaseView<T extends BaseControllerInterface> extends StatelessWidget {

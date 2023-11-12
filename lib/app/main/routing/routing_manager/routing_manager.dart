@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_project/app/main/routing/routing_manager/modules/bottom_navigation_route.dart';
 import 'package:flutter_base_project/features/navigation/unknown_route_screen/unknown_route_screen.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../features/landing/splash_screen/splash_screen.dart';
@@ -15,6 +16,18 @@ class RoutingManager {
 
   static final GlobalKey<NavigatorState> parentKey = GlobalKey();
   static final GlobalKey<NavigatorState> shellKey = GlobalKey();
+
+  Future<void> restartApp() async {
+    Get.deleteAll();
+    pushNamedAndRemoveUntil(name: 'splash');
+  }
+
+  void pushNamedAndRemoveUntil({required String name, Object? data}) {
+    while (context!.canPop()) {
+      context!.pop();
+    }
+    context!.pushReplacementNamed(name, extra: data);
+  }
 
   /// Get the current context
   BuildContext?  get context => parentKey.currentContext;

@@ -1,6 +1,6 @@
 import 'package:flutter_base_project/app/common/exception/app_exception.dart';
 import 'package:flutter_base_project/app/common/extensions/general_extension.dart';
-import '../../main/i10n/i10n.dart';
+import '../../../core/i10n/i10n.dart';
 import '../../data/local_models/domain/base_http_model.dart';
 
 extension BaseRequestExtension<T> on Future<BaseHttpModel<T>> {
@@ -11,7 +11,7 @@ extension BaseRequestExtension<T> on Future<BaseHttpModel<T>> {
     if (response.status.isOk) {
       return response.data as T;
     } else {
-      throw AppException(response.message ?? AppLocalization.getLabels.defaultErrorMessage);
+      throw AppException(response.error?.message ?? AppLocalization.getLabels.defaultErrorMessage);
     }
   }
 }

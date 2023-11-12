@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_project/app/common/base_view/base_view.dart';
 import 'package:flutter_base_project/app/common/extensions/widgets_scale_extension.dart';
-import '../../../../app/utils/size/padding_and_radius.dart';
-import '../controller/splash_controller.dart';
+import 'package:flutter_base_project/app/utils/size/padding_and_radius.dart';
+import 'package:flutter_base_project/features/landing/splash_screen/controller/splash_controller.dart';
 
 class Splash extends StatelessWidget {
 
   const Splash({
-    super.key,
-    required this.controller,
+    required this.controller, super.key,
   });
   final SplashController controller;
 
@@ -33,7 +32,7 @@ class Splash extends StatelessWidget {
           ],
         ),
       ),
-        child: SizedBox.shrink(),
+        child: const SizedBox.shrink(),
       ),
       
     );

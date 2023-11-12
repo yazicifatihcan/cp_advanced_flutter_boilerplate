@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_project/app/common/extensions/widget_extension.dart';
 import 'package:get/get.dart';
-import '../../../main/i10n/i10n.dart';
+import '../../../../core/i10n/i10n.dart';
 import '../../../components/dialog/error_dialog.dart';
 import '../../../main/values/enum/loading_status_enum.dart';
 import '../../../repositories/app_repository.dart';
@@ -13,7 +13,7 @@ abstract class BaseControllerInterface extends GetxController{
   final scaffoldKey = GlobalKey<ScaffoldState>();
   BuildContext get context => scaffoldKey.currentContext!;
 
-  AppRepository get appRepository => AppRepository.instance;
+  AppRepository get appRepository => AppRepository();
 
   final Rx<LoadingStatus> _loadingStatus = Rx(LoadingStatus.Init);
   final Rx<String?> _errorMessage = Rx(null);

@@ -1,4 +1,4 @@
-import '../../main/i10n/i10n.dart';
+import '../../../core/i10n/i10n.dart';
 
 class AppException implements Exception {
 

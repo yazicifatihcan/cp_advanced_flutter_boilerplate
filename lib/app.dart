@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/app/data/local_models/config/environment_config_model.dart';
 import 'package:flutter_base_project/app/main/routing/routing_manager/routing_manager.dart';
+import 'package:flutter_base_project/app/main/theme/color/app_colors.dart';
+import 'package:flutter_base_project/app/main/theme/theme.dart';
+import 'package:flutter_base_project/app/main/theme/themes/app_dark_theme.dart';
 import 'package:flutter_base_project/app/main/values/constants/http_url.dart';
 import 'package:flutter_base_project/app/managers/app_managers/app_state/app_state_controller.dart';
 import 'package:flutter_base_project/app/managers/app_managers/app_state/app_state_stream_builder.dart';
-import 'package:flutter_base_project/app/data/local_models/config/environment_config_model.dart';
+import 'package:flutter_base_project/app/managers/app_managers/size_config.dart';
+import 'package:flutter_base_project/app/managers/locale_manager/locale_manager.dart';
+import 'package:flutter_base_project/core/i10n/default_localization.dart';
+import 'package:flutter_base_project/core/i10n/i10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:overlay_kit/overlay_kit.dart';
 
-import 'app/managers/app_managers/size_config.dart';
-import 'app/managers/locale_manager/locale_manager.dart';
-import 'app/main/theme/color/app_colors.dart';
-import 'app/main/theme/theme.dart';
-import 'app/main/theme/themes/app_dark_theme.dart';
-import 'app/main/i10n/default_localization.dart';
-import 'app/main/i10n/i10n.dart';
 
-
-Future run(EnvironmentConfigModel config) async{
+Future<void> run(EnvironmentConfigModel config) async{
   HttpUrl.baseUrl = config.apiBaseUrl;
   WidgetsFlutterBinding.ensureInitialized();
   await LocaleManager.cacheInit();
@@ -25,10 +24,13 @@ Future run(EnvironmentConfigModel config) async{
 }
 
 class App extends StatelessWidget {
+  ///
   const App({
     super.key,
     required this.title,
   });
+
+  ///
   final String title;
 
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_project/app/main/routing/routing_manager/routing_manager.dart';
+import 'package:flutter_base_project/features/example_screen/example_screen.dart';
 import 'package:flutter_base_project/features/navigation/bottom_navigation_bar/bottom_navigation_bar_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -23,7 +24,7 @@ class BottomNavigationRoute {
           parentNavigatorKey: RoutingManager.shellKey,
           pageBuilder: (context, state) {
             return const NoTransitionPage(
-              child: Center(child: Text('1st')),
+              child: ExampleScreen(),
             );
           },
         ),

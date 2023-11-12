@@ -64,22 +64,15 @@ dependencies:
   # Access to device information
   device_info_plus: ^9.0.1
 
-  # Custom Dio client for specific use
-  cp_dio_client:
-    git: https://github.com/alper-mf/cp_dio_service.git
 
 dev_dependencies:
-  # Dart code analysis and metrics
-  dart_code_metrics: ^5.5.1
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
 
   # Linting rules for Flutter
   flutter_lints: any
-
-  flutter_test:
-    sdk: flutter
-
-  integration_test:
-    sdk: flutter
 
 flutter:
   uses-material-design: true

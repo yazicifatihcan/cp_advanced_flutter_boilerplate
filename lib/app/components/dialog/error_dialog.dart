@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_project/app/common/extensions/widget_extension.dart';
 import 'package:flutter_base_project/app/utils/size/padding_and_radius.dart';
-import '../../main/i10n/i10n.dart';
+import '../../../core/i10n/i10n.dart';
 import 'dialog_widget.dart';
 
 class ErrorDialog<T> extends DialogWidget<T> {

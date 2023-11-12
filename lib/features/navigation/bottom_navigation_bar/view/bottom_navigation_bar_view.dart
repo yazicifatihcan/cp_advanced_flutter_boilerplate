@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 
 class BottomNavigationBarView extends GetView<BottomNavigationController> {
-  const BottomNavigationBarView({super.key,required this.child, });
+  const BottomNavigationBarView({required this.child, super.key, });
 
   final Widget child;
 

@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' show Locale;
 
-import '../values/enum/cache_key_enum.dart';
-import '../../managers/locale_manager/locale_manager.dart';
+import '../../app/main/values/enum/cache_key_enum.dart';
+import '../../app/managers/locale_manager/locale_manager.dart';
 import 'lan/en.dart';
 import 'lan/tr.dart';
 

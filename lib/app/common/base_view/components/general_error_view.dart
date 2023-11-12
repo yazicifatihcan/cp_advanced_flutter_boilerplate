@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_project/app/common/extensions/widget_extension.dart';
-import '../../../main/i10n/i10n.dart';
+import '../../../../core/i10n/i10n.dart';
 import '../../../utils/size/padding_and_radius.dart';
 
 class GeneralErrorView extends StatelessWidget {
