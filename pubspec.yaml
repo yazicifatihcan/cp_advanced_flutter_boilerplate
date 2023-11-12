@@ -31,8 +31,12 @@ dependencies:
   # SVG rendering for Flutter
   flutter_svg: ^2.0.6
 
+  # Authorization using local auth 
+  local_auth: ^2.1.7
+
   # State management and navigation
   get: ^4.6.5
+  
   go_router: ^12.0.0
 
   # Internationalization and localization
