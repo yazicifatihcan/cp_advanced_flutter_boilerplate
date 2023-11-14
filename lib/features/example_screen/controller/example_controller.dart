@@ -13,8 +13,7 @@ class ExampleController extends BaseControllerInterface {
 
 
   Future<void> getAllCharacters()async{
-     final res = await appRepository.authRepository.getAllCharacters().getAllData();
-     print(res?.results?.first.name);
+     await appRepository.authRepository.getAllCharacters().getAllData();
   }
 
 
