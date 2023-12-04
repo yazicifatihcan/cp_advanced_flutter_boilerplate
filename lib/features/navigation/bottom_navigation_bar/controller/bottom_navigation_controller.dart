@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_project/app/common/base_view/controller/base_controller.dart';
+import '../../../../../module/common/lib/src/base_view/controller/base_controller.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 

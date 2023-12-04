@@ -1,5 +1,5 @@
-import 'package:flutter_base_project/app/common/base_view/controller/base_controller.dart';
-import 'package:flutter_base_project/app/common/extensions/domain_extension.dart';
+import '../../../../module/common/lib/src/base_view/controller/base_controller.dart';
+import '../../../../module/common/lib/src/extensions/domain_extension.dart';
 
 class ExampleController extends BaseControllerInterface {
   

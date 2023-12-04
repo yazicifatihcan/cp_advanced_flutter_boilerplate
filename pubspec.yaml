@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.5 <4.0.0'
+  sdk: '>=3.13.0 <4.0.0'
 
 dependencies:
   cached_network_image: ^3.2.3
@@ -31,6 +31,18 @@ dependencies:
   rxdart: ^0.27.7
   shared_preferences: ^2.1.1
   url_launcher: ^6.1.11
+
+  # Modules
+  common:
+    path: module/common
+  core:
+    path: module/core
+  models:
+    path: module/models
+  resources:
+    path: module/resources
+  widget:
+    path: module/widget
 
 dev_dependencies:
 

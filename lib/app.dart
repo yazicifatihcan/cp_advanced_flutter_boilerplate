@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_project/app/data/local_models/config/environment_config_model.dart';
+import '../module/models/lib/src/local_models/config/environment_config_model.dart';
 import 'package:flutter_base_project/app/main/routing/routing_manager/routing_manager.dart';
-import 'package:flutter_base_project/app/main/theme/color/app_colors.dart';
-import 'package:flutter_base_project/app/main/theme/theme.dart';
-import 'package:flutter_base_project/app/main/theme/themes/app_dark_theme.dart';
-import 'package:flutter_base_project/app/main/values/constants/http_url.dart';
-import 'package:flutter_base_project/app/managers/app_managers/app_state/app_state_controller.dart';
-import 'package:flutter_base_project/app/managers/app_managers/app_state/app_state_stream_builder.dart';
-import 'package:flutter_base_project/app/managers/app_managers/size_config.dart';
-import 'package:flutter_base_project/app/managers/locale_manager/locale_manager.dart';
-import 'package:flutter_base_project/core/i10n/default_localization.dart';
-import 'package:flutter_base_project/core/i10n/i10n.dart';
+import 'package:resources/src/theme/color/app_colors.dart';
+import 'package:resources/src/theme/theme.dart';
+import 'package:resources/src/theme/themes/app_dark_theme.dart';
+import 'package:resources/src/constants/http_url.dart';
+import 'package:common/src/managers/app_managers/app_state/app_state_controller.dart';
+import 'package:common/src/managers/app_managers/app_state/app_state_stream_builder.dart';
+import 'package:common/src/managers/app_managers/size_config.dart';
+import 'package:common/src/managers/locale_manager/locale_manager.dart';
+import '../module/core/lib/src/i10n/default_localization.dart';
+import '../module/core/lib/src/i10n/i10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:overlay_kit/overlay_kit.dart';
 

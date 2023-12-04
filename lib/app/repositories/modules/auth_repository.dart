@@ -1,8 +1,8 @@
-import 'package:flutter_base_project/app/data/response_models/all_characters_response_model.dart';
+import '../../../../module/models/lib/src/response_models/all_characters_response_model.dart';
 
-import '../../../core/http_client/dio_service.dart';
-import '../../data/local_models/domain/base_http_model.dart';
-import '../../main/values/constants/http_url.dart';
+import '../../../../module/core/lib/src/http_client/dio_service.dart';
+import '../../../../module/models/lib/src/local_models/domain/base_http_model.dart';
+import '../../../../module/resources/lib/src/constants/http_url.dart';
 import '../base_repository.dart';
 
 class AuthRepository extends BaseRepository {

@@ -1,0 +1,1 @@
+export 'default_localization.dart';

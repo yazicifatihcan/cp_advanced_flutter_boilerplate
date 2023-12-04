@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_base_project/app/common/base_view/controller/base_controller.dart';
-import 'package:flutter_base_project/app/common/exception/app_exception.dart';
-import 'package:flutter_base_project/app/managers/connection_manager/connection_manager.dart';
-import 'package:flutter_base_project/app/managers/local_auth_manager/local_auth_manager.dart';
-import 'package:flutter_base_project/app/managers/notification/local_notification_handler.dart';
-import 'package:flutter_base_project/app/managers/session_manager/session_manager.dart';
-import 'package:flutter_base_project/core/i10n/i10n.dart';
+import '../../../../../module/common/lib/src/base_view/controller/base_controller.dart';
+import '../../../../../module/common/lib/src/exception/app_exception.dart';
+import 'package:common/src/managers/connection_manager/connection_manager.dart';
+import 'package:common/src/managers/local_auth_manager/local_auth_manager.dart';
+import 'package:common/src/managers/notification/local_notification_handler.dart';
+import 'package:common/src/managers/session_manager/session_manager.dart';
+import '../../../../../module/core/lib/src/i10n/i10n.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 

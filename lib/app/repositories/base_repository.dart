@@ -1,15 +1,15 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_base_project/app/data/local_models/domain/base_error_model.dart';
+import '../../../module/models/lib/src/local_models/domain/base_error_model.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/status/http_status.dart';
 
-import '../../core/http_client/dio_service.dart';
-import '../data/local_models/domain/base_http_model.dart';
-import '../data/local_models/domain/base_parse_model.dart';
-import '../main/values/enum/loading_status_enum.dart';
-import '../managers/session_manager/session_manager.dart';
+import '../../../module/core/lib/src/http_client/dio_service.dart';
+import '../../../module/models/lib/src/local_models/domain/base_http_model.dart';
+import '../../../module/models/lib/src/local_models/domain/base_parse_model.dart';
+import '../../../module/resources/lib/src/enum/loading_status_enum.dart';
+import '../../../module/common/lib/src/managers/session_manager/session_manager.dart';
 
 abstract class BaseRepository {
   final DioClient dio;

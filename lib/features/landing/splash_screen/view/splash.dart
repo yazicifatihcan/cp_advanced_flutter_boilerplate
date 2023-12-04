@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_project/app/common/base_view/base_view.dart';
-import 'package:flutter_base_project/app/common/extensions/widgets_scale_extension.dart';
+import '../../../../../module/common/lib/src/base_view/base_view.dart';
+import '../../../../../module/common/lib/src/extensions/widgets_scale_extension.dart';
 import 'package:flutter_base_project/app/utils/size/padding_and_radius.dart';
 import 'package:flutter_base_project/features/landing/splash_screen/controller/splash_controller.dart';
 
