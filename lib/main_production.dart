@@ -1,6 +1,5 @@
-import 'app.dart';
-import 'app/main/values/enum/general_enum.dart';
-import 'app/data/local_models/config/environment_config_model.dart';
+import 'package:flutter_base_project/app.dart';
+import 'package:resources/resources.dart';
 
 
 /// flutter run --flavor product lib/app/main/main_production.dart
@@ -10,7 +9,7 @@ import 'app/data/local_models/config/environment_config_model.dart';
 void main() {
   run(
     EnvironmentConfigModel(
-      app:const App(title: 'ClaudePeak Boilerplate'),
+      appName:'Prod App',
       environment: AppEnvironment.Production,
       apiBaseUrl: 'rickandmortyapi.com',
       socketUrl: 'Socket Url',

@@ -1,0 +1,23 @@
+import 'package:api/src/index.dart';
+
+class BaseErrorModel extends IBaseModel<BaseErrorModel> {
+  BaseErrorModel({
+    this.errorCode,
+    this.message,
+  });
+
+  String? errorCode;
+  String? message;
+
+  @override
+  fromJson(Map<String, dynamic> json) => BaseErrorModel(
+        errorCode: json["error_code"],
+        message: json["message"],
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        "error_code": errorCode,
+        "message": message,
+      };
+}

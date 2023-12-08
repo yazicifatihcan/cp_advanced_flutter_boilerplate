@@ -1,49 +1,42 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base_project/app/data/local_models/config/environment_config_model.dart';
-import 'package:flutter_base_project/app/main/routing/routing_manager/routing_manager.dart';
-import 'package:flutter_base_project/app/main/theme/color/app_colors.dart';
-import 'package:flutter_base_project/app/main/theme/theme.dart';
-import 'package:flutter_base_project/app/main/theme/themes/app_dark_theme.dart';
-import 'package:flutter_base_project/app/main/values/constants/http_url.dart';
-import 'package:flutter_base_project/app/managers/app_managers/app_state/app_state_controller.dart';
-import 'package:flutter_base_project/app/managers/app_managers/app_state/app_state_stream_builder.dart';
-import 'package:flutter_base_project/app/managers/app_managers/size_config.dart';
-import 'package:flutter_base_project/app/managers/locale_manager/locale_manager.dart';
-import 'package:flutter_base_project/core/i10n/default_localization.dart';
-import 'package:flutter_base_project/core/i10n/i10n.dart';
+import 'package:flutter_base_project/product/init/application_initialize.dart';
+import 'package:flutter_base_project/product/init/i10n/default_localization.dart';
+import 'package:flutter_base_project/product/init/i10n/i10n.dart';
+import 'package:flutter_base_project/product/init/theme/themes/module_theme.dart';
+import 'package:flutter_base_project/product/navigation/routing_manager.dart';
+import 'package:flutter_base_project/product/utility/values/app_constants.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:overlay_kit/overlay_kit.dart';
+import 'package:resources/resources.dart';
 
 
 Future<void> run(EnvironmentConfigModel config) async{
-  HttpUrl.baseUrl = config.apiBaseUrl;
-  WidgetsFlutterBinding.ensureInitialized();
-  await LocaleManager.cacheInit();
-
-  runApp.call(config.app);
+  await ApplicationInitialize().make(config);
+  runApp(App(title: config.appName));
 }
 
 class App extends StatelessWidget {
-  ///
   const App({
     super.key,
     required this.title,
   });
-
-  ///
   final String title;
 
   @override
   Widget build(BuildContext context) {
     return OverlayKit(
-      appPrimaryColor: AppColors.primary,
       child: MaterialRxStreamBuilder(
           stream: AppStateController.instance.outModel,
           builder: (_, snapshot) {
             final model = snapshot.data;
             return LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
-                SizeConfig.setScreenSizeFromConstraints(constraints);
+                SizeConfig.setScreenSizeFromConstraints(
+                  constraints: constraints,
+                  designScreenHeight: designHeight,
+                  designScreenWidth: designWidth,
+                );
                 return MaterialApp.router(
                   routerConfig: RoutingManager.instance.router,
                   locale: model!.locale,
@@ -52,23 +45,22 @@ class App extends StatelessWidget {
                     GlobalMaterialLocalizations.delegate,
                     GlobalWidgetsLocalizations.delegate,
                     GlobalCupertinoLocalizations.delegate,
-                    AppLocalization.delegate
+                    AppLocalization.delegate,
                   ],
                   builder: (BuildContext context, Widget? child) {
                     return MediaQuery(
-                      data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+                      data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1)),
                       child: child!,
                     );
                   },
                   scrollBehavior: ScrollConfiguration.of(context).copyWith(overscroll: false),
                   title: title,
                   debugShowCheckedModeBanner: false,
-                  theme: model.themeData,
-                  darkTheme: getTheme(AppDarkTheme()),
+                  theme: getTheme(ModuleTheme(appColors: model.themeData)),
                 );
               },
             );
-          }),
+          },),
     );
   }
 }

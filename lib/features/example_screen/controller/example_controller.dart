@@ -1,5 +1,5 @@
-import 'package:flutter_base_project/app/common/base_view/controller/base_controller.dart';
-import 'package:flutter_base_project/app/common/extensions/domain_extension.dart';
+import 'package:flutter_base_project/product/base/controller/base_controller.dart';
+import 'package:flutter_base_project/product/service/product_client.dart';
 
 class ExampleController extends BaseControllerInterface {
   
@@ -13,7 +13,7 @@ class ExampleController extends BaseControllerInterface {
 
 
   Future<void> getAllCharacters()async{
-     await appRepository.authRepository.getAllCharacters().getAllData();
+     await ProductClient.instance.authRepository.getAllCharacters();
   }
 
 
