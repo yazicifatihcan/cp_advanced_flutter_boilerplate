@@ -2,22 +2,27 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_project/product/utility/enums/project_radius.dart';
 
+///Class that represent theme for whole module.
 class ModuleTheme implements AppTheme {
+  ///Class that represent theme for whole module.
   ModuleTheme({required this.appColors});
 
+  ///Color palette that theme will use.
   AbstractColor appColors;
 
   @override
   IconThemeData get accentIconTheme => const IconThemeData(color: Colors.black);
 
   @override
-  IconThemeData get primaryIconTheme => const IconThemeData(color: Colors.black);
+  IconThemeData get primaryIconTheme =>
+      const IconThemeData(color: Colors.black);
 
   @override
   IconThemeData get iconTheme => const IconThemeData(color: Colors.black);
 
   @override
-  ProgressIndicatorThemeData get progressIndicatorTheme => ProgressIndicatorThemeData(color: appColors.primary);
+  ProgressIndicatorThemeData get progressIndicatorTheme =>
+      ProgressIndicatorThemeData(color: appColors.primary);
 
   @override
   ColorScheme get colorScheme => ColorScheme(
@@ -38,12 +43,14 @@ class ModuleTheme implements AppTheme {
         outline: appColors.outline,
       );
 
-
-
   @override
   CardTheme get cardTheme => CardTheme(
         elevation: 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(ProjectRadius.medium.value)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            ProjectRadius.m.value,
+          ),
+        ),
         color: Colors.black,
         margin: EdgeInsets.zero,
       );
@@ -81,7 +88,7 @@ class ModuleTheme implements AppTheme {
           fontWeight: FontWeight.w400,
           color: appColors.surface,
         ),
-        
+
         headlineLarge: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.w400,
@@ -114,7 +121,7 @@ class ModuleTheme implements AppTheme {
           fontWeight: FontWeight.w400,
           color: appColors.surface,
         ),
-        
+
         titleLarge: TextStyle(
           fontSize: 26,
           fontWeight: FontWeight.w400,
@@ -146,7 +153,7 @@ class ModuleTheme implements AppTheme {
             fontSize: 16,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(ProjectRadius.large.value),
+            borderRadius: BorderRadius.circular(ProjectRadius.l.value),
           ),
         ),
       );
@@ -168,31 +175,31 @@ class ModuleTheme implements AppTheme {
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(
-            ProjectRadius.small.value,
+            ProjectRadius.s.value,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(
-            ProjectRadius.small.value,
+            ProjectRadius.s.value,
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(
-            ProjectRadius.small.value,
+            ProjectRadius.s.value,
           ),
         ),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(
-            ProjectRadius.small.value,
+            ProjectRadius.s.value,
           ),
         ),
         disabledBorder: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(
-            ProjectRadius.small.value,
+            ProjectRadius.s.value,
           ),
         ),
       );
@@ -221,15 +228,17 @@ class ModuleTheme implements AppTheme {
         ),
       );
 
-  
-
   @override
-  OutlinedButtonThemeData get outlinedButtonThemeData => OutlinedButtonThemeData(
+  OutlinedButtonThemeData get outlinedButtonThemeData =>
+      OutlinedButtonThemeData(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
-          foregroundColor: MaterialStateProperty.all<Color>(appColors.secondary),
+          foregroundColor:
+              MaterialStateProperty.all<Color>(appColors.secondary),
           side: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-            if (states.contains(MaterialState.disabled)) return BorderSide(color: appColors.secondary);
+            if (states.contains(MaterialState.disabled)) {
+              return BorderSide(color: appColors.secondary);
+            }
             return BorderSide(color: appColors.secondary);
           }),
           padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
@@ -242,7 +251,7 @@ class ModuleTheme implements AppTheme {
           ),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(ProjectRadius.large.value),
+              borderRadius: BorderRadius.circular(ProjectRadius.l.value),
             ),
           ),
         ),
@@ -254,7 +263,7 @@ class ModuleTheme implements AppTheme {
         checkColor: MaterialStateProperty.all<Color?>(Colors.white),
         side: BorderSide(width: 0.7, color: appColors.primary),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(ProjectRadius.small.value),
+          borderRadius: BorderRadius.circular(ProjectRadius.s.value),
         ),
       );
 
@@ -312,7 +321,9 @@ class ModuleTheme implements AppTheme {
   @override
   DialogTheme get dialogTheme => DialogTheme(
         backgroundColor: Colors.black,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(ProjectRadius.medium.value)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(ProjectRadius.m.value),
+        ),
       );
 
   @override

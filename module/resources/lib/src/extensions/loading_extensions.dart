@@ -1,13 +1,20 @@
 import 'package:resources/src/enum/general_enum.dart';
 
+/// Flutter extension for the [LoadingStatus] enum, providing convenient methods
+/// to check the status of loading operations.
 extension LoadingStatusExtension on LoadingStatus {
-  bool get isLoading => this == LoadingStatus.Loading;
+  /// Returns `true` if the loading status is [LoadingStatus.loading].
+  bool get isLoading => this == LoadingStatus.loading;
 
-  bool get isInit => this == LoadingStatus.Init;
+  /// Returns `true` if the loading status is [LoadingStatus.init].
+  bool get isInit => this == LoadingStatus.init;
 
-  bool get isError => this == LoadingStatus.Error;
+  /// Returns `true` if the loading status is [LoadingStatus.error].
+  bool get isError => this == LoadingStatus.error;
 
-  bool get isLoaded => this == LoadingStatus.Loaded;
+  /// Returns `true` if the loading status is [LoadingStatus.loaded].
+  bool get isLoaded => this == LoadingStatus.loaded;
 
-  bool get isProcessing => this == LoadingStatus.Processing;
+  /// Returns `true` if the loading status is [LoadingStatus.processing].
+  bool get isProcessing => this == LoadingStatus.processing;
 }

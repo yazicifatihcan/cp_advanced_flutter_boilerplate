@@ -1,19 +1,14 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_base_project/product/base/controller/base_controller.dart';
 import 'package:flutter_base_project/product/managers/session_manager.dart';
+import 'package:flutter_base_project/product/widgets/message/custom_toast_message.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:widgets/widget.dart';
 
-class SplashController extends BaseControllerInterface{
-  @override
-  void onInit() {
-    super.onInit();
-    init();
-
-  }
-
+///Controller for Example Screen
+class SplashController extends BaseControllerInterface {
   @override
   void onReady() {
     onReadyGeneric(() async {
@@ -21,28 +16,24 @@ class SplashController extends BaseControllerInterface{
     });
   }
 
-  void init() {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        systemNavigationBarColor: Colors.transparent,
-        systemNavigationBarDividerColor: Colors.transparent,
-        statusBarBrightness: Brightness.dark,
-      ),
-    );
-
-    /// telefonu çevirdiğimiz de sayfanın rotate olmaması için eklendi.
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
-  }
-
+  /// Function call thing to handle in splash
   Future<void> ready() async {
     await Get.deleteAll();
     Get.put(SessionManager());
 
     await LocalAuthManager.initLocalAuthManager();
 
+    await LoadingProgress.loadingProgressInit(
+      loadingWidget: const CircularProgressIndicator(),
+    );
+    await ToastMessage.toastMessageInit(
+      toastWidget: {
+        ToastMessageType.success: ModuleToastMessage.success(),
+        ToastMessageType.warning: ModuleToastMessage.warning(),
+        ToastMessageType.error: ModuleToastMessage.error(),
+      },
+    );
 
-    context.go('/1st');
+    await safeOperation(() async => context.go('/1st'));
   }
 }

@@ -1,13 +1,17 @@
 import 'package:api/src/index.dart';
+import 'package:api/src/repositories/character_module/endpoint/characters_path.dart';
 
+///Response to [DioHttpMethod.get]-[CharacterServicePath.characters]
 class AllCharactersResponseModel extends IBaseModel<AllCharactersResponseModel> {
-  Info? info;
-  List<Result>? results;
 
+  ///Response to [DioHttpMethod.get]-[CharacterServicePath.characters]
   AllCharactersResponseModel({
     this.info,
     this.results,
   });
+
+  Info? info;
+  List<Result>? results;
 
   @override
   Map<String, dynamic> toJson() => {
@@ -18,15 +22,15 @@ class AllCharactersResponseModel extends IBaseModel<AllCharactersResponseModel> 
   @override
   AllCharactersResponseModel fromJson(Map<String, dynamic> json) => AllCharactersResponseModel(
         info: json['info'] == null ? null : Info.fromJson(json['info'] as Map<String,dynamic>),
-        results: json['results'] == null ? [] : List<Result>.from(json['results']!.map((x) => Result.fromJson(x))),
+        results: json['results'] == null
+            ? []
+            : List<Result>.from(
+                json['results']!.map(Result.fromJson),
+              ),
       );
 }
 
 class Info {
-  int? count;
-  int? pages;
-  String? next;
-  dynamic prev;
 
   Info({
     this.count,
@@ -36,11 +40,15 @@ class Info {
   });
 
   factory Info.fromJson(Map<String, dynamic> json) => Info(
-        count: json['count'],
-        pages: json['pages'],
-        next: json['next'],
-        prev: json['prev'],
+        count: json['count'] as int?,
+        pages: json['pages'] as int?,
+        next: json['next'] as String?,
+        prev: json['prev'] as dynamic,
       );
+  int? count;
+  int? pages;
+  String? next;
+  dynamic prev;
 
   Map<String, dynamic> toJson() => {
         'count': count,
@@ -51,18 +59,6 @@ class Info {
 }
 
 class Result {
-  int? id;
-  String? name;
-  String? status;
-  String? species;
-  String? type;
-  String? gender;
-  Location? origin;
-  Location? location;
-  String? image;
-  List<String>? episode;
-  String? url;
-  DateTime? created;
 
   Result({
     this.id,
@@ -93,6 +89,18 @@ class Result {
         url: json['url'],
         created: json['created'] == null ? null : DateTime.parse(json['created']),
       );
+  int? id;
+  String? name;
+  String? status;
+  String? species;
+  String? type;
+  String? gender;
+  Location? origin;
+  Location? location;
+  String? image;
+  List<String>? episode;
+  String? url;
+  DateTime? created;
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -111,8 +119,6 @@ class Result {
 }
 
 class Location {
-  String? name;
-  String? url;
 
   Location({
     this.name,
@@ -123,6 +129,8 @@ class Location {
         name: json['name'],
         url: json['url'],
       );
+  String? name;
+  String? url;
 
   Map<String, dynamic> toJson() => {
         'name': name,

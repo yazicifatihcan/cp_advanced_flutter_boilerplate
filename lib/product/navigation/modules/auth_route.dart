@@ -2,10 +2,12 @@ import 'package:flutter_base_project/features/landing/splash_screen/splash_scree
 import 'package:go_router/go_router.dart';
 
 
+/// Route Class for Auth Routes
 class AuthRoute {
   AuthRoute._();
 
-  //**Auth Routes */
+  
+  ///auth path
   static const String auth = '/auth';
 
   /// Auth Router

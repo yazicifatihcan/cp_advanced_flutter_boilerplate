@@ -3,10 +3,12 @@ import 'package:flutter_base_project/features/navigation/bottom_navigation_bar/c
 import 'package:get/get.dart';
 
 
-
+///General View for all bottom bar views
 class BottomNavigationBarView extends GetView<BottomNavigationController> {
+  ///General View for all bottom bar views
   const BottomNavigationBarView({required this.child, super.key, });
 
+  ///View to display on bottom bar screen body
   final Widget child;
 
   @override

@@ -7,11 +7,12 @@ import 'package:flutter_base_project/product/init/i10n/lan/tr.dart';
 const Locale kDefaultLocal = Locale('tr');
 
 /// Ugulamanın desteklediği diler
-const Map<String, AppLocalizationLabel> supportedLocalization = {
+Map<String, AppLocalizationLabel> supportedLocalization = {
   'tr': TrLocalization(),
   'en': EnLocalization(),
 };
 
+///Function that returns all supported locales.
 List<Locale> get getSupportedLocalList => List.generate(
       supportedLocalization.length,
       (int index) => Locale(
@@ -20,61 +21,39 @@ List<Locale> get getSupportedLocalList => List.generate(
     );
 
 
-
+///Abstrac class that keeps all texts.
 abstract class AppLocalizationLabel {
+  ///Abstrac class that keeps all texts.
   const AppLocalizationLabel();
 
+  ///English
   String get localizationTitle;
 
+  ///EN
   String get lanCode;
 
-
-
-
-  /// Error Text
+  ///An error occurred. Please try again later
   String get defaultErrorMessage;
 
+  ///A server-related error occurred. Please try again later
   String get serverErrorMessage;
 
+  ///Please check your internet connection.
   String get noInternetErrorMessage;
 
+  ///You do not have the authority for this operation.
   String get unauthorizedErrorMessage;
 
+  ///The connection has timed out
   String get timeoutErrorMessage;
 
-  /// Button Text
-
+  ///Cancel
   String get cancelBtnText;
 
+  ///Try Again
   String get tryAgainBtnText;
 
-  /// Regex
-  String get enterEmailAddressReqExMessage;
-
-  String get enterValidEmailReqExMessage;
-
-  String get enterTelNoReqExMessage;
-
-  String get enterValidTelNoReqExMessage;
-
-  String get enterValidCodeReqExMessage;
-
-  String get enterNameReqExMessage;
-
-  String get enterValidNameReqExMessage;
-
-  String get enterSurnameReqExMessage;
-
-  String get enterValidSurnameReqExMessage;
-
-  String get requiredFieldReqExMessage;
-
-  String get enterValidCardNoReqExMessage;
-
-  String get enterValidDatReqExMessage;
-
-  String get enterValidPasswordReqExMessage;
-
+  ///You should not be here :)
   String get unknownPageRouteMessageText;
 
 }

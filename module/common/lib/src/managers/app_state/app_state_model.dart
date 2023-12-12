@@ -1,16 +1,25 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 
+/// Class that keeps color and locale data for app.
 class AppStateModel {
-
+  /// Class that keeps color and locale data for app.
   AppStateModel({required this.locale, required this.themeData});
-  
+
+  /// Locale value [Locale]
   final Locale locale;
+
+  /// Color Palette [AbstractColor]
   final AbstractColor themeData;
 
+  ///Method to generate copy of [AppStateModel]. Can be used to
+  ///override fields.
   AppStateModel copyWith({
-    final Locale? locale,
-    final AbstractColor? themeData,
+    Locale? locale,
+    AbstractColor? themeData,
   }) =>
-      AppStateModel(locale: locale ?? this.locale, themeData: themeData ?? this.themeData);
+      AppStateModel(
+        locale: locale ?? this.locale,
+        themeData: themeData ?? this.themeData,
+      );
 }

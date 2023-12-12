@@ -7,18 +7,24 @@ import 'package:flutter_base_project/product/navigation/modules/bottom_navigatio
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
-class RoutingManager extends AbstractRoutingManager{
+/// Routing Manager for module
+class RoutingManager extends AbstractRoutingManager {
   RoutingManager._privateConstructor();
 
   static final RoutingManager _instance = RoutingManager._privateConstructor();
+
+  /// Routing Manager instance
   static RoutingManager get instance => _instance;
 
+  /// Parent navigator key
   static final GlobalKey<NavigatorState> parentKey = GlobalKey();
+
+  /// Shell navigator key
   static final GlobalKey<NavigatorState> shellKey = GlobalKey();
 
   @override
   Future<void> restartApp() async {
-    Get.deleteAll();
+    await Get.deleteAll();
     pushNamedAndRemoveUntil(name: 'splash');
   }
 
@@ -32,9 +38,9 @@ class RoutingManager extends AbstractRoutingManager{
 
   /// Get the current context
   @override
-  BuildContext?  get context => parentKey.currentContext;
+  BuildContext? get context => parentKey.currentContext;
 
-  final _router = GoRouter( 
+  final _router = GoRouter(
     observers: [NavigationHistoryObserver()],
     debugLogDiagnostics: true,
     initialLocation: '/',
@@ -62,5 +68,6 @@ class RoutingManager extends AbstractRoutingManager{
   RouterDelegate<Object> get routerDelegate => _router.routerDelegate;
 
   @override
-  RouteInformationParser<Object> get routeInformationParser => _router.routeInformationParser;
+  RouteInformationParser<Object> get routeInformationParser =>
+      _router.routeInformationParser;
 }

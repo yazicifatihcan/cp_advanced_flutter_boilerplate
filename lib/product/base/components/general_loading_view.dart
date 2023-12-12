@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+///General Loading View
 class GeneralLoadingView extends StatelessWidget {
+  ///General Loading View
   const GeneralLoadingView({super.key});
 
   @override

@@ -1,63 +1,62 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 
+/// Color palette for Dark Colors. Theme Code-> 'light'
 class LightColors implements AbstractColor {
   @override
-  Color get background => const Color(0xFFFFFFFF); // Background color
+  Color get background => const Color(0xFFFFFFFF); //
 
   @override
-  Brightness get brightness => Brightness.light; // Brightness setting
+  Brightness get brightness => Brightness.light;
 
   @override
-  Color get error => Colors.red; // Error color
+  Color get error => Colors.red;
 
   @override
-  Color get errorContainer => const Color(0xFFFFCCCC); // Error container color
+  Color get errorContainer => const Color(0xFFFFCCCC);
 
   @override
-  Color get onBackground => const Color(0xFF000000); // Text color on background
+  Color get onBackground => const Color(0xFF000000);
 
   @override
-  Color get onError => Colors.white; // Text color on error
+  Color get onError => Colors.white;
 
   @override
-  Color get onPrimary => const Color(0xFF000000); // Text color on primary
+  Color get onPrimary => const Color(0xFF000000);
 
   @override
-  Color get onSecondary => const Color(0xFF000000); // Text color on secondary
+  Color get onSecondary => const Color(0xFF000000);
 
   @override
-  Color get onSurface => const Color(0xFF000000); // Text color on surface
+  Color get onSurface => const Color(0xFF000000);
 
   @override
-  Color get onTertiary => const Color(0xFF000000); // Text color on tertiary
+  Color get onTertiary => const Color(0xFF000000);
 
   @override
-  Color get outline => Colors.grey; // Outline color
+  Color get outline => Colors.grey;
 
   @override
-  Color get primary => Colors.blue; // Primary color
+  Color get primary => Colors.blue;
 
   @override
-  Color get primaryContainer => const Color(0xFFE3F2FD); // Primary container color
+  Color get primaryContainer => const Color(0xFFE3F2FD);
 
   @override
-  Color get scrim => const Color(0x99000000); // Scrim color
+  Color get scrim => const Color(0x99000000);
 
   @override
-  Color get secondary => Colors.green; // Secondary color
+  Color get secondary => Colors.green;
 
   @override
-  Color get secondaryContainer => const Color(0xFFC8E6C9); // Secondary container color
+  Color get secondaryContainer => const Color(0xFFC8E6C9);
 
   @override
-  Color get surface => Colors.white; // Surface color
+  Color get surface => Colors.white;
 
   @override
-  Color get tertiary => Colors.orange; // Tertiary color
+  Color get tertiary => Colors.orange;
 
   @override
-  String get themeCode => "light"; // Theme code
-
-  // Add more properties and their implementations as needed...
+  String get themeCode => 'light';
 }

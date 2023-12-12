@@ -1,53 +1,72 @@
-import 'dart:developer';
-import 'dart:ui' as ui;
-
 import 'package:flutter/material.dart';
 
-
-
-/// Ekran boyutlarını tutmak için yazıldı
+/// Class to keep Scren related Sizes
 class SizeConfig {
-  /// static MediaQueryData __mediaQueryData = MediaQueryData.fromWindow(ui.window);
   static double _statusBarHeight = 0;
   static double _screenWidth = 0;
   static double _screenHeight = 0;
 
-  static MediaQueryData get _mediaQueryData => MediaQueryData.fromView(ui.window);
-  
+  static MediaQueryData _mediaQueryData(BuildContext context) =>
+      MediaQueryData.fromView(View.of(context));
 
-  static double get screenWidth =>
-      _screenWidth = _mediaQueryData.size.width == 0 ? _screenWidth : _mediaQueryData.size.width;
+  /// Returns screen width.
+  static double screenWidth(BuildContext context) =>
+      _screenWidth = _mediaQueryData(context).size.width == 0
+          ? _screenWidth
+          : _mediaQueryData(context).size.width;
 
-  static double get screenHeight =>
-      _screenHeight = _mediaQueryData.size.height == 0 ? _screenHeight : _mediaQueryData.size.height;
+  /// Returns screen height.
+  static double screenHeight(BuildContext context) =>
+      _screenHeight = _mediaQueryData(context).size.height == 0
+          ? _screenHeight
+          : _mediaQueryData(context).size.height;
 
-  static double get blockSizeHorizontal => screenWidth / 100;
+  /// Returns the width of one percentage point of the screen width.
+  static double blockSizeHorizontal(BuildContext context) =>
+      screenWidth(context) / 100;
 
-  static double get blockSizeVertical => screenHeight / 100;
+  /// Returns the height of one percentage point of the screen height.
+  static double blockSizeVertical(BuildContext context) =>
+      screenHeight(context) / 100;
 
-  static double get _safeAreaHorizontal => _mediaQueryData.padding.left + _mediaQueryData.padding.right;
+  /// Calculates the horizontal padding from the safe area.
+  static double _safeAreaHorizontal(BuildContext context) =>
+      _mediaQueryData(context).padding.left +
+      _mediaQueryData(context).padding.right;
 
-  static double get _safeAreaVertical => _mediaQueryData.padding.top + _mediaQueryData.padding.bottom;
+  /// Calculates the vertical padding from the safe area.
+  static double _safeAreaVertical(BuildContext context) =>
+      _mediaQueryData(context).padding.top +
+      _mediaQueryData(context).padding.bottom;
 
-  static double get safeBlockHorizontal => (screenWidth - _safeAreaHorizontal) / 100;
+  /// Returns the width of one percentage point of the screen width
+  /// excluding safe area padding.
+  static double safeBlockHorizontal(BuildContext context) =>
+      (screenWidth(context) - _safeAreaHorizontal(context)) / 100;
 
-  static double get safeBlockVertical => (screenHeight - _safeAreaVertical) / 100;
+  /// Returns the height of one percentage point of the screen height,
+  /// excluding safe area padding.
+  static double safeBlockVertical(BuildContext context) =>
+      (screenHeight(context) - _safeAreaVertical(context)) / 100;
 
-  static double get statusBarHeight =>
-      _statusBarHeight = _mediaQueryData.padding.top != 0 ? _mediaQueryData.padding.top : _statusBarHeight;
+  /// Returns the height of the device's status bar.
+  static double statusBarHeight(BuildContext context) =>
+      _statusBarHeight = _mediaQueryData(context).padding.top != 0
+          ? _mediaQueryData(context).padding.top
+          : _statusBarHeight;
 
-  static EdgeInsets get safeAreaPadding => _mediaQueryData.padding;
+  /// Returns the padding of the safe area.
+  static EdgeInsets safeAreaPadding(BuildContext context) =>
+      _mediaQueryData(context).padding;
 
-  static double get devicePixelRatio => _mediaQueryData.devicePixelRatio;
+  /// Returns the device's pixel ratio.
+  static double devicePixelRatio(BuildContext context) =>
+      _mediaQueryData(context).devicePixelRatio;
 
+  /// Returns the standard height of an app bar.
   static double get appBarHeight => kToolbarHeight;
 
-  static double get screenHeightTopSafeArea => screenHeight - statusBarHeight;
-
-  static void setScreenSizeFromConstraints(
-      {required BoxConstraints constraints, required double designScreenWidth, required double designScreenHeight}) {
-    _screenWidth = constraints.maxWidth == 0 ? designScreenWidth : constraints.maxWidth;
-    _screenHeight = constraints.maxHeight == 0 ? designScreenHeight : constraints.maxHeight;
-    log('${SizeConfig.screenWidth}x${SizeConfig.screenHeight}', name: 'Screen local pixel');
-  }
+  /// Returns the height of the screen, excluding the status bar.
+  static double screenHeightTopSafeArea(BuildContext context) =>
+      screenHeight(context) - statusBarHeight(context);
 }

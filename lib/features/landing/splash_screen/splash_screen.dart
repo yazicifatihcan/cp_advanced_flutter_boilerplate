@@ -4,8 +4,9 @@ import 'package:flutter_base_project/features/landing/splash_screen/controller/s
 import 'package:flutter_base_project/features/landing/splash_screen/view/splash.dart';
 import 'package:get/get.dart';
 
-/// Splash ekranı
+///Widget for initializing GetxController for Example Screen
 class SplashScreen extends StatelessWidget {
+  ///Widget for initializing GetxController for Example Screen
   const SplashScreen({super.key});
 
   @override

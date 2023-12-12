@@ -1,19 +1,21 @@
 import 'package:flutter_base_project/app.dart';
 import 'package:resources/resources.dart';
 
-/// Development ortamı
+/// DEV ENVIRONMENT
 ///
-/// COMMAND LINE örneği
+/// COMMAND LINE EXAMPLE
 /// flutter run --flavor development lib/app/main/main_development.dart
-/// flutter build apk --release --flavor product lib/main_product.dart --no-tree-shake-icons
+/// flutter build apk --release --flavor development lib/app/main/main_development.dart --no-tree-shake-icons
+/// flutter build appbundle --release --flavor development lib/app/main/main_development.dart
 void main() {
   run(
     EnvironmentConfigModel(
       appName:'Dev App',
-      environment: AppEnvironment.Development,
+      environment: AppEnvironment.development,
       apiBaseUrl: 'rickandmortyapi.com',
       socketUrl: 'Socket Url',
     ),
   );
 }
+
  

@@ -1,8 +1,8 @@
 import 'package:resources/src/enum/general_enum.dart';
 
-
-
+///Class that keeps environment specific values.
 class EnvironmentConfigModel {
+  ///Class that keeps environment specific values.
   EnvironmentConfigModel({
     required this.environment,
     required this.apiBaseUrl,
@@ -10,8 +10,13 @@ class EnvironmentConfigModel {
     required this.appName,
   });
 
+  ///Variable that keeps  current environment.
+  ///[AppEnvironment.development] or [AppEnvironment.production]
   final AppEnvironment environment;
+  ///Name of the app.
   final String appName;
+  ///Environment specific api base url.
   final String apiBaseUrl;
+  ///Environment specific socket base url.
   final String socketUrl;
 }

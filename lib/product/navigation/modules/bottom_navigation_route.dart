@@ -6,9 +6,12 @@ import 'package:go_router/go_router.dart';
 
 
 
+/// Route Class for Bottom Navigation Routes
 class BottomNavigationRoute {
   BottomNavigationRoute._();
 
+
+  /// Bottom Navigation Router
   static final route = ShellRoute(
       navigatorKey: RoutingManager.shellKey,
       

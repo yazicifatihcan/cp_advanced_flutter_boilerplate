@@ -3,19 +3,22 @@ import 'dart:io';
 import 'package:api/src/index.dart';
 import 'package:dio/dio.dart';
 
+///Base Client that handles all kind of request using [DioClient]
 abstract class BaseClient {
-  final DioClient dio;
-
+  ///Base Client constructors.
   BaseClient({
     required this.dio,
   });
 
+  ///Dio instance within BaseClient
+  final DioClient dio;
 
-  Future<BaseHttpModel<T>> baseRequest<T extends IBaseModel?>({
-    IBaseModel? requestModel,
-    IBaseModel? responseModel,
+  ///Base request that handles
+  Future<BaseHttpModel<T>> baseRequest<T extends IBaseModel<T>?>({
     required String httpUrl,
     required DioHttpMethod method,
+    IBaseModel<T>? requestModel,
+    IBaseModel<T>? responseModel,
     Map<String, dynamic>? queryParams,
     Map<String, String>? headerParam,
     int? successStatus,
@@ -26,23 +29,31 @@ abstract class BaseClient {
         httpUrl,
         bodyParam: requestModel?.toJson() ?? {},
         queryParams: queryParams,
-        headerParam: headerParam, 
+        headerParam: headerParam,
       );
       if (response!.statusCode == (successStatus ?? HttpStatus.ok)) {
         T? returnResponse;
-        if (responseModel!=null) {
-          returnResponse = responseModel.jsonParser(jsonEncode(response.data));
+        if (responseModel != null) {
+          returnResponse =
+              responseModel.jsonParser(jsonEncode(response.data)) as T;
         }
-        return BaseHttpModel(status: BaseModelStatus.Ok, data: returnResponse==null ? null : returnResponse as T);
+        return BaseHttpModel(
+            status: BaseModelStatus.ok,
+            data: returnResponse == null ? null : returnResponse as T,);
       } else {
-        final BaseErrorModel errorModel = BaseErrorModel().jsonParser(jsonEncode(response.data));
-        return BaseHttpModel(status: BaseModelStatus.Error, error: errorModel);
+        final errorModel = BaseErrorModel()
+            .jsonParser(jsonEncode(response.data)) as BaseErrorModel;
+        return BaseHttpModel(status: BaseModelStatus.error, error: errorModel);
       }
     } on DioException catch (e) {
-      final BaseErrorModel errorModel = BaseErrorModel().jsonParser(jsonEncode(e.response?.data));
-      return BaseHttpModel(status: BaseModelStatus.fromValue(e.response?.statusCode), error: errorModel);
+      final errorModel = BaseErrorModel()
+          .jsonParser(jsonEncode(e.response?.data)) as BaseErrorModel;
+      return BaseHttpModel(
+        status: BaseModelStatus.fromValue(e.response?.statusCode),
+        error: errorModel,
+      );
     } catch (e) {
-      return BaseHttpModel(status: BaseModelStatus.Error);
+      return BaseHttpModel(status: BaseModelStatus.error);
     }
   }
 }

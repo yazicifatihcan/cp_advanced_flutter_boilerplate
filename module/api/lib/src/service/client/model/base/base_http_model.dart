@@ -1,63 +1,81 @@
+// ignore_for_file: sort_constructors_first
+
 import 'package:api/src/index.dart';
 
+/// Base http model for parsing api responses.
 class BaseHttpModel<T> {
+  /// Constructor
+  BaseHttpModel({required this.status, this.data, this.error});
 
-  BaseHttpModel({required this.status, this.data, this.error, this.errorCode});
+  /// BaseModelStatus that represent the status of response as [BaseModelStatus]
   BaseModelStatus status;
+
+  /// Parsed API response if there is any response.
   T? data;
+
+  /// Parsed API response if there is any error.
   BaseErrorModel? error;
-  String? errorCode;
 }
 
+/// Enum that represents api statusses.
 enum BaseModelStatus {
   /// 200 - OK
-  Ok(200),
-  
+  ok(200),
+
   /// 400 - Bad Request
-  Error(400),
-  
-  /// 200 - Action Completed Successfully
-  Action(200),
-  
-  /// 422 - Unprocessable Entity
-  UnprocessableEntity(422),
+  error(400),
 
   /// 422 - Unprocessable Entity
-  InternalServerError(500),
-  
+  unprocessableEntity(422),
+
+  /// 422 - Unprocessable Entity
+  internalServerError(500),
+
   /// 408 - Request Timeout
-  Timeout(408),
-  
+  timeout(408),
+
   /// 404 - Not Found
-  NotFound(404),
-  
+  notFound(404),
+
   /// 302 - Found (Redirect)
-  Found(302);
-  
+  found(302);
+
+  /// value that represnt the int status code.
   final int value;
-  
+
+  /// Constructor
   const BaseModelStatus(this.value);
 
+  /// method that returns [BaseModelStatus] from int value
   static BaseModelStatus fromValue(int? value) {
-    if(value==null) return BaseModelStatus.Error;
-    return BaseModelStatus.values.firstWhere((element) => element.value == value,
-        orElse: () => BaseModelStatus.Error);
+    if (value == null) return BaseModelStatus.error;
+    return BaseModelStatus.values.firstWhere(
+      (element) => element.value == value,
+      orElse: () => BaseModelStatus.error,
+    );
   }
 }
 
-
+/// BaseModelStatusExtension for checking the status of the response
 extension BaseModelStatusExtension on BaseModelStatus {
-  bool get isOk => this == BaseModelStatus.Ok;
+  ///If resposne status is [BaseModelStatus.ok].
+  bool get isOk => this == BaseModelStatus.ok;
 
-  bool get isAction => this == BaseModelStatus.Action;
+  ///If resposne status is [BaseModelStatus.error].
+  bool get isError => this == BaseModelStatus.error;
 
-  bool get isError => this == BaseModelStatus.Error;
+  ///If resposne status is [BaseModelStatus.unprocessableEntity].
+  bool get isUnprocessableEntity => this == BaseModelStatus.unprocessableEntity;
 
-  bool get isUnprocessableEntity => this == BaseModelStatus.UnprocessableEntity;
+  ///If resposne status is [BaseModelStatus.internalServerError].
+  bool get isInternalServerError => this == BaseModelStatus.internalServerError;
 
-  bool get isTimeOut => this == BaseModelStatus.Timeout;
+  ///If resposne status is [BaseModelStatus.timeout].
+  bool get isTimeOut => this == BaseModelStatus.timeout;
 
-  bool get isNotFound => this == BaseModelStatus.NotFound;
+  ///If resposne status is [BaseModelStatus.notFound].
+  bool get isNotFound => this == BaseModelStatus.notFound;
 
-  bool get isFound => this == BaseModelStatus.Found;
+  ///If resposne status is [BaseModelStatus.found].
+  bool get isFound => this == BaseModelStatus.found;
 }

@@ -3,13 +3,22 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+/// Class that handles local notifications
 class LocalNotificationHandler {
 
+  /// Factory constructor to ensure a constant context for static initialization
+  factory LocalNotificationHandler() {
+    _instance ??= LocalNotificationHandler._init();
+    return _instance!;
+  }
+
+  // Private constructor
   LocalNotificationHandler._init() {
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
     if (Platform.isIOS) {
       flutterLocalNotificationsPlugin!
-          .resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>()
+          .resolvePlatformSpecificImplementation<
+              IOSFlutterLocalNotificationsPlugin>()
           ?.requestPermissions(
             alert: true,
             badge: true,
@@ -18,25 +27,24 @@ class LocalNotificationHandler {
     }
     _initializeOtherPlatform();
   }
+
+  /// Instance for [FlutterLocalNotificationsPlugin] needs to be 
+  /// init before used
   late final FlutterLocalNotificationsPlugin? flutterLocalNotificationsPlugin;
+  /// Current notificaiton Id
   int notificationId = 0;
   static LocalNotificationHandler? _instance;
 
-  static LocalNotificationHandler get instance {
-    _instance ??= LocalNotificationHandler._init();
-    return _instance!;
-  }
-
   Future<void> _initializeOtherPlatform() async {
-    final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-    final DarwinInitializationSettings initializationSettingsDarwin = DarwinInitializationSettings(
+    final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+    final initializationSettingsDarwin = DarwinInitializationSettings(
       onDidReceiveLocalNotification: _onDidReceiveLocalNotification,
     );
-    final InitializationSettings initializationSettings = InitializationSettings(
+    final initializationSettings = InitializationSettings(
       android: const AndroidInitializationSettings('app_icon'),
       iOS: initializationSettingsDarwin,
     );
-    flutterLocalNotificationsPlugin.initialize(
+    await flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
       onDidReceiveNotificationResponse: _onTapNotification,
     );
@@ -46,12 +54,14 @@ class LocalNotificationHandler {
     debugPrint('selectNotification payload: $payload');
   }
 
-  Future<void> _onDidReceiveLocalNotification(int id, String? title, String? body, String? payload) async {
+  Future<void> _onDidReceiveLocalNotification(
+      int id, String? title, String? body, String? payload,) async {
     debugPrint('onDidReceiveLocalNotification payload: $payload');
   }
 
+  /// Method to call for showing notification
   Future<void> showNotification({String? title, String? body}) async {
-    if(title==null) return;
+    if (title == null) return;
     notificationId++;
     await flutterLocalNotificationsPlugin!.show(
       notificationId,

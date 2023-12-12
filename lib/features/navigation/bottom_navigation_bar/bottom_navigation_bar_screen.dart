@@ -3,9 +3,13 @@ import 'package:flutter_base_project/features/navigation/bottom_navigation_bar/c
 import 'package:flutter_base_project/features/navigation/bottom_navigation_bar/view/bottom_navigation_bar_view.dart';
 import 'package:get/get.dart';
 
+///Widget for initializing GetxController for [BottomNavigationBarScreen]
 class BottomNavigationBarScreen extends StatelessWidget {
+  ///Widget for initializing GetxController for [BottomNavigationBarScreen]
   const BottomNavigationBarScreen({required this.child, super.key});
 
+  ///Child that represnt the current View based on 
+  ///selected BottomNavigationBar index
   final Widget child;
 
   @override

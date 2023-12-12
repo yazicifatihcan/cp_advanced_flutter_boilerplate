@@ -4,54 +4,74 @@ import 'package:flutter_base_project/product/utility/enums/cache_enums.dart';
 import 'package:get/get.dart';
 
 
-
+///Class that manages current session.
 class SessionManager extends GetxController {
   final Rx<GetUserInfoModel> _currentUser = GetUserInfoModel().obs;
   final Rx<bool?> _loggedIn = Rx<bool?>(null);
   String? _token;
 
+  ///Gets the current user value.
   GetUserInfoModel get currentUser => _currentUser.value;
 
-  set currentUser(GetUserInfoModel value) {
-    _currentUser.firstRebuild = true;
-    _currentUser.value = value;
-  }
+  ///Sets the current user value.
+  set currentUser(GetUserInfoModel value) => _currentUser
+    ..firstRebuild = true
+    ..value = value;
+  
 
+  ///Gets the current user token if it's saved.
   String? getUserToken() {
-    return _token ??= LocaleManager.instance.getStringValue(CacheKey.token.name);
+    return _token ??= LocaleManager.instance.getStringValue(
+      key: CacheKey.token.name,
+    );
   }
 
+  ///Sets the current user token if it's saved.
   Future<void> setUserToken(String value) async {
-    await LocaleManager.instance.setStringValue(CacheKey.token.name, value);
+    await LocaleManager.instance.setStringValue(
+      key: CacheKey.token.name,
+      value: value,
+    );
     _token = value;
   }
 
+  ///Gets the bool value that represnt if user logged in or not.
   bool isUserLogin() {
     if (_loggedIn.value == null) {
-      final bool value = LocaleManager.instance.getBoolValue(CacheKey.loggedIn.name) ?? false;
+      final value =
+          LocaleManager.instance.getBoolValue(key: CacheKey.loggedIn.name) ??
+              false;
       _loggedIn.value = value;
     }
     return _loggedIn.value!;
   }
-
-  Future<void> setLoggedIn(bool value) async {
-    await LocaleManager.instance.setBoolValue(CacheKey.loggedIn.name, value);
+  
+  ///Sets the bool value that represnt if user logged in or not.
+  Future<void> setLoggedIn({required bool value}) async {
+    await LocaleManager.instance.setBoolValue(
+      key: CacheKey.loggedIn.name,
+      value: value,
+    );
     _loggedIn.value = value;
   }
 
+  ///Logs out the current user.
+  ///Sets logged in to false and removes the token from cache.
   Future<void> logOut() async {
     await Future.wait([
       LocaleManager.instance.removeAt(CacheKey.token.name),
-      setLoggedIn(false),
+      setLoggedIn(value:false),
     ]);
     currentUser = GetUserInfoModel();
   }
 
 
+  ///Logs in the current user.
+  ///Sets logged in to true and removes the token from cache.
   Future<void> logIn(GetUserInfoModel user) async {
     currentUser = user;
     await Future.wait([
-      setLoggedIn(true),
+      setLoggedIn(value:true),
       setUserToken(currentUser.token!),
     ]);
   }

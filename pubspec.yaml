@@ -1,39 +1,43 @@
 name: flutter_base_project
-description: A new Flutter project
-publish_to: 'none'
+
 version: 1.0.0+1
 
-environment:
+publish_to: none
+
+description: A new Flutter project
+
+environment: 
   sdk: '>=3.0.5 <4.0.0'
 
-dependencies:
-  flutter_localizations:
+dependencies: 
+  api: 
+    path: module/api
+  common: 
+    path: module/common
+  flutter: 
     sdk: flutter
-  flutter:
+  flutter_local_notifications: ^14.1.0
+  flutter_localizations: 
     sdk: flutter
-
   get: ^4.6.6
   go_router: ^12.1.1
-  flutter_local_notifications: ^14.1.0
   logger: ^2.0.2+1
-
-  common:
-    path: module/common
-  api:
-    path: module/api
-  resources:
+  resources: 
     path: module/resources
-  widgets:
+  widgets: 
     path: module/widgets
 
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  integration_test:
-    sdk: flutter
+dev_dependencies: 
   device_preview: ^1.1.0
+  flutter_test: 
+    sdk: flutter
+  integration_test: 
+    sdk: flutter
   patrol: ^3.1.0
+  very_good_analysis: ^5.1.0
 
-flutter:
+
+flutter: 
   uses-material-design: true
-  
+  assets:
+    - module/resources/assets/icons/

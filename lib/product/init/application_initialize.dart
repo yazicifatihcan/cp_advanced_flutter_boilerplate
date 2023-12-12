@@ -5,14 +5,16 @@ import 'package:flutter/services.dart';
 import 'package:flutter_base_project/product/init/theme/color/light_colors.dart';
 import 'package:flutter_base_project/product/managers/local_notification_handler.dart';
 import 'package:flutter_base_project/product/service/product_client.dart';
+import 'package:flutter_base_project/product/utility/enums/cache_enums.dart';
 import 'package:logger/logger.dart';
 import 'package:resources/resources.dart';
-import 'package:widgets/widget.dart';
 
+///Class that handles required initialazations for the app.
 class ApplicationInitialize {
 
   late EnvironmentConfigModel _config;
   
+  ///Method that initialize app for given [EnvironmentConfigModel]
   Future<void> make(EnvironmentConfigModel config) async {
     _config = config;
     WidgetsFlutterBinding.ensureInitialized();
@@ -30,25 +32,40 @@ class ApplicationInitialize {
     WidgetsFlutterBinding.ensureInitialized();
     await LocaleManager.cacheInit();
     
-    await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
-
-    
     // LocalNotificationHandler.instance;
-    ProductClient.clientInit(_config);
-    LoadingProgress.loadingProgressInit(loadingWidget: const CircularProgressIndicator());
-    ToastMessage.toastMessageInit(toastWidget: const Text('This is a toast message'));
-    AppStateController.init(
-      colorPalettes: [LightColors()],
+    await ProductClient.clientInit(_config);
+    
+    await AppStateController.init(
+      colorPalettes: [
+        LightColors(),
+      ],
+      colorCode: LocaleManager.instance.getStringValue(
+        key: CacheKey.colorCode.name,
+      ),
+      lanCode: LocaleManager.instance.getStringValue(
+        key: CacheKey.lanCode.name,
+      ),
     );
 
-    // FirebaseMessagingService.messagingInit(showNotification: (title,body)=>LocalNotificationHandler.instance.showNotification(title: title,body: body));
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarDividerColor: Colors.transparent,
+        statusBarBrightness: Brightness.dark,
+      ),
+    );
+
+
+    await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+    //  FirebaseMessagingService.messagingInit(
+    //   showNotification: (title, body) => LocalNotificationHandler.instance
+    //       .showNotification(title: title, body: body),
+    // );
 
     await AppInfo.init();
 
-    LocalNotificationHandler.instance;
+    LocalNotificationHandler();
     
     FlutterError.onError = (details) {
       Logger().e(details.exceptionAsString());

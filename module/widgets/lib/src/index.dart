@@ -1,4 +1,5 @@
 export 'bottom_sheet/index.dart';
+export 'button/index.dart';
 export 'dialog/index.dart';
 export 'image/index.dart';
 export 'message/index.dart';

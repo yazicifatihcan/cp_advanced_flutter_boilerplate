@@ -1,22 +1,24 @@
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
-import 'package:flutter/material.dart';
 
+///You can manage firebase dynamic links through this class
 class FirebaseDeeplinkService {
-
   FirebaseDeeplinkService._();
   static FirebaseDeeplinkService? _instance;
 
-  static FirebaseDeeplinkService get instance {
+  /// FirebaseDeeplinkService instance
+  FirebaseDeeplinkService get instance {
     _instance ??= FirebaseDeeplinkService._();
     return _instance!;
   }
 
-  Future<void> getAndListenToDynamicLink() async {
+  /// This method return current link that triggers the app.
+  /// Null if there is nothing.
+  Future<PendingDynamicLinkData?> getAndListenToDynamicLink() async {
     try {
-      final PendingDynamicLinkData? initialLink = await FirebaseDynamicLinks.instance.getInitialLink();
-
+      final initialLink = await FirebaseDynamicLinks.instance.getInitialLink();
+      return initialLink;
     } catch (e) {
-      debugPrint('getAndListenToDynamicLink Error');
+      return null;
     }
   }
 }

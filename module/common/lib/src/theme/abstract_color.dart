@@ -1,28 +1,62 @@
 import 'package:flutter/material.dart';
 
-abstract class AbstractColor{
-
+///Abstract class that represent everything
+///necessary for creating color palette.
+abstract class AbstractColor {
+  ///Theme code
   String get themeCode;
+
+  ///Brightness of Color Palette
   Brightness get brightness;
 
-  
+  ///Primary
   Color get primary;
-  Color get onPrimary;
-  Color get primaryContainer;
-  Color get secondary;
-  Color get onSecondary;
-  Color get tertiary;
-  Color get onTertiary;
-  Color get scrim;
-  Color get secondaryContainer;
-  Color get surface;
-  Color get onSurface;
-  Color get background;
-  Color get onBackground;
-  Color get error;
-  Color get onError;
-  Color get errorContainer;
-  Color get outline;
 
-  
+  ///OnPrimary
+  Color get onPrimary;
+
+  ///PrimaryContainer
+  Color get primaryContainer;
+
+  ///Secondary
+  Color get secondary;
+
+  ///OnSecondary
+  Color get onSecondary;
+
+  ///Tertiary
+  Color get tertiary;
+
+  ///OnTertiary
+  Color get onTertiary;
+
+  ///Scrim
+  Color get scrim;
+
+  ///SecondaryContainer
+  Color get secondaryContainer;
+
+  ///Surface
+  Color get surface;
+
+  ///OnSurface
+  Color get onSurface;
+
+  ///Background
+  Color get background;
+
+  ///OnBackground
+  Color get onBackground;
+
+  ///Error
+  Color get error;
+
+  ///OnError
+  Color get onError;
+
+  ///ErrorContainer
+  Color get errorContainer;
+
+  ///Outline
+  Color get outline;
 }

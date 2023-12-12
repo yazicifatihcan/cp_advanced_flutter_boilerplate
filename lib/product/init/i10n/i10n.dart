@@ -2,24 +2,35 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_base_project/product/init/i10n/default_localization.dart';
 import 'package:flutter_base_project/product/navigation/routing_manager.dart';
 
+///App Localization class manages labels and delegates
 class AppLocalization<T extends AppLocalizationLabel> {
-
   const AppLocalization._(this.locale, this.labels);
+
+  ///Locale value
   final Locale locale;
+
+  ///Locale labels
   final T labels;
 
+  ///Returns all labels for current context
   static AppLocalizationLabel get getLabels {
-    AppLocalization? localization = Localizations.of(RoutingManager.instance.context!, AppLocalization);
-    localization ??= AppLocalization._(kDefaultLocal, supportedLocalization[kDefaultLocal.languageCode]!);
+    var localization = Localizations.of<AppLocalization>(
+      RoutingManager.instance.context!,
+      AppLocalization,
+    );
+    localization ??= AppLocalization._(
+      kDefaultLocal,
+      supportedLocalization[kDefaultLocal.languageCode]!,
+    );
     return localization.labels;
   }
 
-  static _AppLocalizationDelegate delegate = const _AppLocalizationDelegate();
+  /// Returns delagates
+  static AppLocalizationDelegate delegate = AppLocalizationDelegate();
 }
 
-class _AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
-  const _AppLocalizationDelegate();
-
+/// AppLocalizationDelegate
+class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
   @override
   bool isSupported(Locale locale) {
     return supportedLocalization.containsKey(locale.languageCode);
@@ -27,7 +38,10 @@ class _AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
 
   @override
   Future<AppLocalization> load(Locale locale) async {
-    final AppLocalization<AppLocalizationLabel> localization = AppLocalization._(locale, supportedLocalization[locale.languageCode]!);
+    final localization = AppLocalization<AppLocalizationLabel>._(
+      locale,
+      supportedLocalization[locale.languageCode]!,
+    );
     return localization;
   }
 
