@@ -16,7 +16,7 @@ class SplashController extends BaseControllerInterface {
     });
   }
 
-  /// Function call thing to handle in splash
+  /// Function call to handle things in splash
   Future<void> ready() async {
     await Get.deleteAll();
     Get.put(SessionManager());
@@ -26,6 +26,9 @@ class SplashController extends BaseControllerInterface {
     await LoadingProgress.loadingProgressInit(
       loadingWidget: const CircularProgressIndicator(),
     );
+
+
+
     await ToastMessage.toastMessageInit(
       toastWidget: {
         ToastMessageType.success: ModuleToastMessage.success(),

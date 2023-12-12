@@ -15,22 +15,7 @@ enum ToastMessageType {
 
 /// Singleton class to manage and display toast messages.
 class ToastMessage {
-  ToastMessage._init();
-  late final Map<ToastMessageType, BaseMessageWidget> _defaultWidget;
 
-  static final ToastMessage _instance = ToastMessage._init();
-
-  /// Gets the singleton instance of [ToastMessage].
-  static ToastMessage get instance => _instance;
-
-  /// Initializes the default toast widgets for each message type.
-  ///
-  /// This method should be called before using [showToastMessage].
-  static Future<void> toastMessageInit({
-    required Map<ToastMessageType, BaseMessageWidget> toastWidget,
-  }) async {
-    instance._defaultWidget = toastWidget;
-  }
 
   /// Displays a toast message with the specified parameters.
   ///
@@ -38,7 +23,8 @@ class ToastMessage {
   /// the specified [type] is used.
   /// The [duration] parameter controls how long the toast message
   /// will be displayed.
-  void showToastMessage(
+  
+  ToastMessage.showToastMessage(
     {
       required String message,
     required ToastMessageType type, 
@@ -60,6 +46,27 @@ class ToastMessage {
       duration: Duration(seconds: duration ?? 2),
     );
   }
+
+  
+  ToastMessage._init();
+
+  late final Map<ToastMessageType, BaseMessageWidget> _defaultWidget;
+
+  static final ToastMessage _instance = ToastMessage._init();
+
+  /// Gets the singleton instance of [ToastMessage].
+  static ToastMessage get instance => _instance;
+
+  /// Initializes the default toast widgets for each message type.
+  ///
+  /// This method should be called before using [showToastMessage].
+  static Future<void> toastMessageInit({
+    required Map<ToastMessageType, BaseMessageWidget> toastWidget,
+  }) async {
+    instance._defaultWidget = toastWidget;
+  }
+
+  
 }
 
 /// Abstract base class for toast message widgets.

@@ -10,8 +10,6 @@ class ExampleController extends BaseControllerInterface {
     await onReadyGeneric(() async {
       await getAllCharacters();
     });
-
-
   }
 
 
