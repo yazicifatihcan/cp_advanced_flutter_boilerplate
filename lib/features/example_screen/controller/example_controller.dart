@@ -8,13 +8,12 @@ class ExampleController extends BaseControllerInterface {
   @override
   Future<void> onReady() async {
     await onReadyGeneric(() async {
-      await getAllCharacters();
+      await _getAllCharacters();
     });
   }
 
 
-  ///Function that gets all characters
-  Future<void> getAllCharacters()async{
+  Future<void> _getAllCharacters()async{
      await ProductClient.instance.authRepository.getAllCharacters();
   }
 

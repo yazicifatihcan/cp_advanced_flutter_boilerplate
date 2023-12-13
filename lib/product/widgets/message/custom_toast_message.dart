@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/product/navigation/routing_manager.dart';
 import 'package:flutter_base_project/product/utility/enums/project_padding.dart';
 import 'package:resources/resources.dart';
 import 'package:widgets/widget.dart';
@@ -21,7 +22,7 @@ class ModuleToastMessage extends BaseMessageWidget {
   factory ModuleToastMessage.error() {
     return ModuleToastMessage(
       backgroundColor:
-          Colors.red,
+          RoutingManager.instance.context!.error,
       svg: const IconAssets().outlineDoneIcon.svg(height: 24,width: 24),
     );
   }

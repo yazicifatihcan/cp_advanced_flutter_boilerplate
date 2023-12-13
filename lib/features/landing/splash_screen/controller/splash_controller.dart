@@ -23,11 +23,15 @@ class SplashController extends BaseControllerInterface {
 
     await LocalAuthManager.initLocalAuthManager();
 
+    await _initializeWidgets();
+
+    await safeOperation(() async => context.go('/1st'));
+  }
+
+  Future<void> _initializeWidgets() async {
     await LoadingProgress.loadingProgressInit(
       loadingWidget: const CircularProgressIndicator(),
     );
-
-
 
     await ToastMessage.toastMessageInit(
       toastWidget: {
@@ -36,7 +40,5 @@ class SplashController extends BaseControllerInterface {
         ToastMessageType.error: ModuleToastMessage.error(),
       },
     );
-
-    await safeOperation(() async => context.go('/1st'));
   }
 }
